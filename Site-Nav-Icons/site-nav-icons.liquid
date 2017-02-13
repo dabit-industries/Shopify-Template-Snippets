@@ -1,0 +1,63 @@
+<ul class="site-nav list--inline {{ nav_alignment }}" id="SiteNav">
+  {% for link in linklists[section.settings.main_linklist].links %}
+    {%- assign child_list_handle = link.title | handleize -%}
+
+    {% if linklists[child_list_handle].links != blank %}
+      <li class="site-nav--has-dropdown{% if link.active %} site-nav--active{% endif %}">
+        <a href="{{ link.url }}" class="site-nav__link site-nav__link--main" aria-has-popup="true" aria-expanded="false" aria-controls="SiteNavLabel-{{ child_list_handle }}">
+          {% assign title_section = link.title | split: "i>" %}
+          {% for section_part in title_section %}
+            {% if section_part != ">" %}
+              {% if section_part contains "</" %}
+                <i class="{{ section_part | remove: "</" | escape }}"></i>
+              {% else  %}
+                {{ section_part | remove: "<" | escape }}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+          {% include 'icon-chevron-down' %}
+          <span class="visually-hidden">{{ 'layout.navigation.expand' | t }}</span>
+        </a>
+
+        <div class="site-nav__dropdown" id="SiteNavLabel-{{ child_list_handle }}">
+          <ul>
+            {% for childlink in linklists[child_list_handle].links %}
+              <li {% if childlink.active %}class="site-nav--active"{% endif %}>
+                <a href="{{ childlink.url }}" class="site-nav__link site-nav__child-link{% if forloop.last %} site-nav__link--last{% endif %}">
+                  {% assign childtitle_section = childlink.title | split: "i>" %}
+                  {% for section_part in childtitle_section %}
+                    {% if section_part != ">" %}
+                      {% if section_part contains "</" %}
+                        <i class="{{ section_part | remove: "</" | escape }}"></i>
+                      {% else  %}
+                        {{ section_part | remove: "<" | escape }}
+                      {% endif %}
+                    {% endif %}
+                  {% endfor %}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </li>
+    {% else %}
+      <li {% if link.active %}class="site-nav--active"{% endif %}>
+        <a href="{{ link.url }}" class="site-nav__link site-nav__link--main">
+          {% assign title_section = link.title | split: "i>" %}
+          {% for section_part in title_section %}
+            {% if section_part != ">" %}
+              {% if section_part contains "</" %}
+                <i class="{{ section_part | remove: "</" | escape }}"></i>
+              {% else  %}
+                {{ section_part | remove: "<" | escape }}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+
+
