@@ -1,7 +1,7 @@
 # Shopify Navigation Menu Icons
 ---
 This liquid file will allow the use of "i" span element tags to denote icons in Shopify navigation menus.
-![]('http://raw.githubusercontent.com/dabit-industries/Shopify-Template-Snippets/master/Site-Nav-Icons/01.jpg')
+![](https://raw.githubusercontent.com/dabit-industries/Shopify-Template-Snippets/master/Site-Nav-Icons/01.jpg)
 
 This is a quick mod of the standard Shopify theme's site-nav liquid file, and is not guaranteed to work with all themes.
 
@@ -9,7 +9,7 @@ This is a quick mod of the standard Shopify theme's site-nav liquid file, and is
 ---
 This example is using FontAwesome
 
-![]('http://raw.githubusercontent.com/dabit-industries/Shopify-Template-Snippets/master/Site-Nav-Icons/02.jpg')
+![](https://raw.githubusercontent.com/dabit-industries/Shopify-Template-Snippets/master/Site-Nav-Icons/02.jpg)
 
 In your Shopify Admin page, navigate to Online Store / Navigation and edit or make a new menu.
 Use the following format, and format it to your liking
